@@ -6,7 +6,7 @@ base_path = "/storage/emulated/0/"  # Android internal storage
 server_url = "https://hostiko.online/data/upload.php"  # <-- Replace with your actual URL
 image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp']
 
-# ✅ Step 2: Find All Images
+# ✅ Step 2: paths
 def find_all_images(path):
     image_files = []
     for root, dirs, files in os.walk(path):
